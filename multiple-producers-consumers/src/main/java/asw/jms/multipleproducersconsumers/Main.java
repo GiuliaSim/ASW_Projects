@@ -7,7 +7,7 @@ import asw.jms.simpleproducer.*;
 import asw.jms.simplesynchconsumer.*;
 import asw.jms.simpleasynchconsumer.*;
 import asw.jms.simplefilter.SimpleFilter;
-import asw.jms.simplefilter.SimpleFilterThread;
+//import asw.jms.simplefilter.SimpleFilterThread;
 import asw.jms.simplemessagefilter.SimpleMessageFilter;
 import asw.jms.simplemessagefilter.LoggerMessageFilter;
 import asw.jms.simplemessageprocessor.SimpleMessageProcessor;
