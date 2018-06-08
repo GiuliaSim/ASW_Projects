@@ -2,9 +2,12 @@ asw/util/cancellable/KeyboardKiller.class
 asw/jms/simplemessagefilter/SimpleMessageFilter.class
 asw/util/logging/TextFormatter.class
 asw/jms/simplemessagefilter/LoggerMessageFilter.class
+asw/util/sleep/Sleeper.class
+asw/util/cancellable/Cancellable.class
+META-INF/maven/jms/simple-filter/pom.properties
+META-INF/maven/jms/simple-filter/pom.xml
+asw/jms/simplefilter/SimpleFilter.class
 asw/jndi/JndiUtil.class
 asw/jms/simplefilter/Main.class
 asw/util/logging/AswLogger.class
-asw/util/sleep/Sleeper.class
-asw/util/cancellable/Cancellable.class
-asw/jms/simplefilter/SimpleFilter.class
+META-INF/MANIFEST.MF
