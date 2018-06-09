@@ -9,7 +9,7 @@ import javax.jms.JMSContext;
 import javax.jms.JMSException;
 import javax.jms.JMSProducer;
 import javax.jms.TextMessage;
-
+import asw.util.sleep.Sleeper;
 import jndi.JndiUtil;
 
 /**
@@ -44,6 +44,8 @@ public class SimpleProducer {
     /* numero di messaggi inviati */
     private int messagesSent;
 
+	private int delay;
+
     /** Crea un nuovo SimpleProducer, di nome n, per una destinazione destinationName. */
     public SimpleProducer(String n, String destinationName, String connectionFactoryName) {
 
@@ -51,6 +53,14 @@ public class SimpleProducer {
         this.destination = (Destination) JndiUtil.getInstance().jndiLookup(destinationName);
         this.connectionFactory = (ConnectionFactory) JndiUtil.getInstance().jndiLookup(connectionFactoryName);
         this.messagesSent = 0;
+    }
+    public SimpleProducer(String n, String destinationName, String connectionFactoryName, int delay) {
+
+        this.name = n;
+        this.destination = (Destination) JndiUtil.getInstance().jndiLookup(destinationName);
+        this.connectionFactory = (ConnectionFactory) JndiUtil.getInstance().jndiLookup(connectionFactoryName);
+        this.messagesSent = 0;
+        this.delay=delay;
     }
 	
     /** Crea un nuovo SimpleProducer, di nome n, per una destinazione d. */
@@ -80,11 +90,23 @@ public class SimpleProducer {
         }
     }
 
-    /** Invia un messaggio di testo text alla destinazione */
+//    /** Invia un messaggio di testo text alla destinazione */
+//    public void sendMessage(String text) {
+//        try {
+//        	TextMessage message = context.createTextMessage();
+//            message.setText(text);
+//            logger.info(this.name + ": Sending message: " + message.getText());
+//            messageProducer.send(destination, message);
+//            this.messagesSent++;
+//        } catch (JMSException e) {
+//        	logger.info(this.name + ": Error while sending message: " + e.toString());
+//        }
+//    }
     public void sendMessage(String text) {
         try {
         	TextMessage message = context.createTextMessage();
             message.setText(text);
+            Sleeper.sleep(delay);;
             logger.info(this.name + ": Sending message: " + message.getText());
             messageProducer.send(destination, message);
             this.messagesSent++;
@@ -92,6 +114,7 @@ public class SimpleProducer {
         	logger.info(this.name + ": Error while sending message: " + e.toString());
         }
     }
+
 
     /** Restituisce una descrizione di questo producer. */
     public String toString() {

@@ -134,6 +134,7 @@ public class SimpleFilter implements Cancellable, SimpleMessageProcessor {
      * Riceve e filtra un messaggio
      * (implementa TextMessageProcessor).
      */
+	@Override
 	public void processMessage(String inMessage) {
 		/* delega il filtraggio del messaggio ricevuto al suo message filter */
 		logger.fine("SimpleFilter.processMessage(): received " + inMessage);

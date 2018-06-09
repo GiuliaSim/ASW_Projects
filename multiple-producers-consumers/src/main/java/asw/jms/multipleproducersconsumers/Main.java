@@ -4,11 +4,14 @@ import javax.jms.*;
 import javax.annotation.Resource;
 
 import asw.jms.simpleproducer.*;
+import asw.jms.simpleproducerthread.SimpleProducerThread;
 import asw.jms.simplesynchconsumer.*;
+import asw.jms.simplesynchconsumerythread.SimpleSynchConsumerThread;
 import asw.jms.simpleasynchconsumer.*;
+import asw.jms.simpleasynchconsumerthread.SimpleAsynchConsumerThread;
 import asw.jms.simplefilter.SimpleFilter;
 //???
-import asw.jms.simplefilter.SimpleFilterThread;
+import asw.jms.simpleafilterthread.SimpleFilterThread;
 import asw.jms.simplemessagefilter.SimpleMessageFilter;
 import asw.jms.simplemessagefilter.LoggerMessageFilter;
 import asw.jms.simplemessageprocessor.SimpleMessageProcessor;

@@ -67,5 +67,10 @@
 			<artifactId>artemis-jms-client</artifactId>
 			<version>2.6.0</version>
 		</dependency>
+		<dependency>
+			<groupId>asw-util</groupId>
+			<artifactId>asw-util</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 </project>

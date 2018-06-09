@@ -16,7 +16,7 @@
 	</properties>
 
 	<build>
-		<plugins>
+		<plugins> 
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.7.0</version>
@@ -71,25 +71,31 @@
 			<groupId>artemis</groupId>
 			<artifactId>simple-producer</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-			<scope>compile</scope>
+			
 		</dependency>
 		<dependency>
 			<groupId>jms</groupId>
 			<artifactId>simple-asynch-consumer</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-			<scope>compile</scope>
+			
 		</dependency>
 		<dependency>
 			<groupId>jms</groupId>
 			<artifactId>simple-synch-consumer</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-			<scope>compile</scope>
+			
 		</dependency>
 		<dependency>
 			<groupId>jms</groupId>
 			<artifactId>simple-filter</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-			<scope>compile</scope>
+			
+		</dependency>
+		<dependency>
+			<groupId>asw-util</groupId>
+			<artifactId>asw-util</artifactId>
+			<version>0.0.1-SNAPSHOT</version> 
 		</dependency>
 	</dependencies>
+	
 </project>

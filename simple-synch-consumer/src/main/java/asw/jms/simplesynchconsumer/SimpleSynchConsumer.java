@@ -4,6 +4,7 @@ import javax.jms.*;
 
 import java.util.logging.Logger;
 
+import asw.jms.simplemessageprocessor.SimpleMessageProcessor;
 import asw.jndi.JndiUtil; 
 
 import asw.util.cancellable.Cancellable;
@@ -41,7 +42,12 @@ public class SimpleSynchConsumer implements Cancellable {
     private JMSConsumer messageConsumer = null;
 
     /* e' stato cancellato? */
+    
+    private int timeout;
+    
     private boolean cancelled;
+
+	private SimpleMessageProcessor  simpleProcessor;
 
     /** Crea un nuovo SimpleSynchConsumer, di nome n, per una destinazione destinationName. */
     public SimpleSynchConsumer(String n, String destinationName, String connectionFactoryName) {
@@ -51,6 +57,16 @@ public class SimpleSynchConsumer implements Cancellable {
         this.connectionFactory = (ConnectionFactory) JndiUtil.getInstance().jndiLookup(connectionFactoryName);
         this.messagesReceived = 0;
         this.cancelled = false;
+
+    }
+    public SimpleSynchConsumer(String n, String destinationName, String connectionFactoryName, int timeout) {
+
+        this.name = n;
+        this.destination = (Destination) JndiUtil.getInstance().jndiLookup(destinationName);
+        this.connectionFactory = (ConnectionFactory) JndiUtil.getInstance().jndiLookup(connectionFactoryName);
+        this.messagesReceived = 0;
+        this.cancelled = false;
+        this.timeout= timeout;
 
     }
 	
@@ -118,9 +134,9 @@ public class SimpleSynchConsumer implements Cancellable {
             /* m = messageConsumer.receive(); */ 
 			/* versione cancellabile */ 
             while (m==null && ! isCancelled()) {
-            	m = messageConsumer.receiveNoWait();
-            	Sleeper.sleep(10);
-				/* oppure: m = messageConsumer.receive(10); */
+            	/* oppure:m = messageConsumer.receiveNoWait();*/
+            	Sleeper.sleep(timeout);
+				 m = messageConsumer.receive(timeout); 
             }
             if (m instanceof TextMessage) {
             	TextMessage message = (TextMessage) m;
@@ -140,6 +156,10 @@ public class SimpleSynchConsumer implements Cancellable {
 
     public boolean isCancelled() {
     	return this.cancelled;
-    }	
+    }
+
+    
+    
+
 	
 }
