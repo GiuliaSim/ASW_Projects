@@ -17,14 +17,17 @@ public class SimpleAsynchConsumerThread extends Thread {
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
 		super.run();
 		  /* connessione */
     	asynchConsumer.connect();
 
     	/* ricezione messaggi */
     	asynchConsumer.receiveMessages();
+    	/* disconnessione */
+		 asynchConsumer.disconnect();
+       
 	}
-
-
+	
+	
+	
 }

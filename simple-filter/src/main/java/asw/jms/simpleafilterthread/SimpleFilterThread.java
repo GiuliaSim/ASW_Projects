@@ -26,6 +26,10 @@ public class SimpleFilterThread extends Thread {
 
     	/* filtraggio messaggi */
     	simpleFilter.filterMessages();
+    	
+    	/* disconnessione */
+        simpleFilter.disconnect();
+
 	}
 
 }

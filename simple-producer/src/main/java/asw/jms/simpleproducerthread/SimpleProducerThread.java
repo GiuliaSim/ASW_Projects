@@ -3,7 +3,6 @@ package asw.jms.simpleproducerthread;
 import java.util.logging.Logger;
 
 import asw.jms.simpleproducer.SimpleProducer;
-import asw.util.sleep.Sleeper;
 
 
 public class SimpleProducerThread extends Thread {
@@ -33,8 +32,11 @@ public class SimpleProducerThread extends Thread {
         for (int i=1; i<=numMsgs; i++) {
         	simpleProducer.sendMessage("Message #" + i + " from thread " + name);
         }
+        simpleProducer.disconnect();
 	}
 
+
+	
 
 	
 }

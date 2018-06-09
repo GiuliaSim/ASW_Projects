@@ -136,6 +136,7 @@ public class SimpleAsynchConsumer implements Cancellable, MessageListener {
     		}
     	}
     }
+    
 
     /** Restituisce una descrizione di questo consumer. */
     public String toString() {

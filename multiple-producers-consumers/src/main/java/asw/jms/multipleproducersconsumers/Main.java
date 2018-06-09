@@ -27,13 +27,13 @@ import asw.util.sleep.Sleeper;
  * Avvia piu' produttori e piu' consumatori, in thread separati.
  * Usa il seguente scenario (fissato nel codice di questa classe)
  *
- * Producer ALPHA --                     --  Consumer GAMMA1
+ * Producer ALPHA --                     --  Consumer GAMMA1(sincrono)
  *                  \--\             /--/
- *                      |-- topic --|                                        -- Consumer GAMMA2
+ *                      |-- topic --|                                        -- Consumer GAMMA2(sincrono)
  *                  /--/             \--\                                /--/
  * Producer BETA  --                     --   Filter PHI    --  queue --|
  *                                                                       \--\
- *                                                                           -- Consumer GAMMA3
+ *                                                                           -- Consumer GAMMA3(asincrono)
  *
  * Due produttori verso il topic T.
  * Al topic T sono registrati un consumatore sincrono e un filtro, che invia messaggi alla coda C.
@@ -146,7 +146,9 @@ public class Main {
 			tp2.join();
 			tcs1.join();
 			tcs2.join();
+			ca1.cancel();
 			tca1.join();
+			f1.cancel();
 			tf1.join();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
