@@ -1,3 +1,3 @@
-cd /var/lib/server/bin
+cd /home/asw/server/bin
 sudo ./artemis-service start
 exit 0 
