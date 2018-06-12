@@ -10,7 +10,7 @@ import javax.jms.JMSException;
 import javax.jms.JMSProducer;
 import javax.jms.TextMessage;
 import asw.util.sleep.Sleeper;
-import jndi.JndiUtil;
+import asw.jndi.JndiUtil;
 
 /**
  * Un SimpleProducer e' in grado di inviare una sequenza di messaggi
