@@ -65,11 +65,11 @@ Per compilare un'applicazione bisogna:
 
 2. posizionarsi nella cartella principale dell'applicazione di interesse 
 
-3. per compilare e assemblare l'applicazione, usare il comando `maven install` 
+3. per compilare e assemblare l'applicazione, usare il comando `mvn install` 
 
 E' anche possibile: 
 
-* ripulire la build di un'applicazione, con il comando `maven clean`
+* ripulire la build di un'applicazione, con il comando `mvn clean`
 
 
 ## Esecuzione 
