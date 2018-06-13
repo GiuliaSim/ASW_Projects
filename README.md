@@ -3,7 +3,7 @@
 Questo repository contiene il codice del *progetto* 
 del corso di [Architettura dei Sistemi Software](http://cabibbo.dia.uniroma3.it/asw/), 
 relativo ad *applicazioni distribuite* basate sull'uso di *Api JMS* 
-implementate dal servizio di middleware *Artemis*: 
+implementate dal servizio di middleware [Apache Artemis](https://activemq.apache.org/artemis/): 
 * il software è scritto in [Java](http://www.oracle.com/technetwork/java/index.html), 
   e costruito con [Maven](https://maven.apache.org/); 
 * l'ambiente di esecuzione distribuito è composto 
