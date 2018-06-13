@@ -76,9 +76,8 @@ E' anche possibile:
 
 Il risultato della costruzione di un'applicazione 
 è composto da un **componente eseguibile**, 
-che dopo la costruzione sono disponibili nella cartella **TODO: NON LO SO** dell'applicazione, 
-che in particolare conterrà una sotto-cartella per ciascun componente eseguibile dell'applicazione, 
-contenente i file *jar* dell'applicazione. 
+che dopo la costruzione è disponibile nella cartella *projects/jar*,  
+contenente il file *jar* dell'applicazione. 
 
 In alternativa si possono trovare direttamente i file jar 
 sempre nella cartella [jar](proj/jar/).
