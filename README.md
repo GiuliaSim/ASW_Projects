@@ -97,7 +97,7 @@ E' anche possibile:
 
 Il risultato della costruzione di un'applicazione 
 è composto da un **componente eseguibile**, 
-che dopo la costruzione è disponibile nella cartella *projects/jar*,  
+che dopo la costruzione è disponibile nella cartella *projects/jar*,
 contenente il file *jar* dell'applicazione. 
 
 In alternativa, nella cartella [jar](proj/jar/) 
