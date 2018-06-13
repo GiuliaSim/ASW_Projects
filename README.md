@@ -30,16 +30,19 @@ Questo repository è organizzato in due sezioni principali:
 L'ambiente di esecuzione è composto da due macchine virtuali, 
 collegate in una rete privata. 
 
-Gli ambienti vengono creati con **Vagrant**,
-per gestire l'ambiente distribuito bisogna:
+Gli ambienti vengono creati con **Vagrant**.
+
+Per gestire l'ambiente distribuito bisogna:
 
 1. usare una shell del proprio PC 
 
-2. posizionarsi nella cartella dell'[ambiente] (env/VMs/)
+2. posizionarsi nella cartella dell' [ambiente] (env/VMs/)
 
-3. per avviare l'ambiente di esecuzione, 
-usare il comando `vagrant up Artemis` per creare la macchina virtuale *Artemis*
-e `vagrant up Client` per creare la macchina virtuale *Client*
+3. per avviare l'ambiente di esecuzione:
+
+* usare il comando `vagrant up Artemis` per creare e/o avviare la macchina virtuale *Artemis*
+
+* usare il comando `vagrant up Client` per creare e/o avviare la macchina virtuale *Client*
 
 4. per collegarsi con SSH alla macchina virtuale *Client* dell'ambiente, usare il comando `vagrant ssh Client`
     
@@ -49,7 +52,7 @@ E' anche possibile:
 
 * distruggere l'ambiente di esecuzione, con il comando `vagrant destroy -f` 
 
-## Build  
+## Build delle applicazioni
 
 La costruzione (build, ovvero compilazione e assemblaggio) delle applicazioni 
 va fatta applicazione per applicazione, 
@@ -58,7 +61,7 @@ utilizzando **Maven**.
 Per compilare un'applicazione bisogna: 
 
 1. collegarsi con `vagrant ssh` alla macchina virtuale **Client** 
-   dell'[ambiente distribuito](env/VMs/), su cui sono installati *Java SDK* e *Maven* 
+   dell' [ambiente distribuito](env/VMs/), su cui sono installati *Java SDK* e *Maven* 
 
 2. posizionarsi nella cartella principale dell'applicazione di interesse 
 
@@ -72,12 +75,13 @@ E' anche possibile:
 ## Esecuzione 
 
 Il risultato della costruzione di un'applicazione 
-è composto da uno **componente eseguibile**, 
+è composto da un **componente eseguibile**, 
 che dopo la costruzione sono disponibili nella cartella **TODO: NON LO SO** dell'applicazione, 
 che in particolare conterrà una sotto-cartella per ciascun componente eseguibile dell'applicazione, 
 contenente i file *jar* dell'applicazione. 
+
 In alternativa si possono trovare direttamente i file jar 
-sempre nella cartella dei [progetti] (proj/).
+sempre nella cartella [jar] (proj/jar/).
 
 Ciascun componente eseguibile va poi mandato in esecuzione 
 nell'ambito della macchina virtuale *Client* dell'[ambiente distribuito](env/VMs/). 
@@ -85,7 +89,10 @@ nell'ambito della macchina virtuale *Client* dell'[ambiente distribuito](env/VMs
 I **progetti** si trovano 
 nella cartella **/home/asw/projects/** oppure nella cartella **projects/** dell'utente di default. 
 
-Quindi posizionarsi nella cartella dei progetti con il comando `cd projects/`
-ed eseguire il file jar *X.jar* con il comando `java -jar X.jar` 
+Per eseguire le applicazioni:
+
+* Posizionarsi nella cartella dei progetti con il comando `cd projects/`;
+
+* Eseguire il file jar *X.jar* con il comando `java -jar X.jar` 
 (ad esempio, **java -jar simple-producer-0.0.1-SNAPSHOT-jar-with-dependencies.jar**)
 
