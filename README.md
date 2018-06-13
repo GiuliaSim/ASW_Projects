@@ -54,14 +54,35 @@ E' anche possibile:
 
 ## Build delle applicazioni
 
+I **progetti** si trovano 
+nella cartella **/home/asw/projects/** oppure nella cartella **projects/** dell'utente di default. 
+
 La costruzione (build, ovvero compilazione e assemblaggio) delle applicazioni 
 va fatta applicazione per applicazione, 
 utilizzando **Maven**. 
+Tenendo conto che l'ordine in cui vengono costruite le applicazioni deve essere il seguente:
+
+1. asw-util
+
+2. asw-jndi
+
+3. simple-producer
+
+4. simple-synch-consumer
+
+5. simple-asynch-consumer
+
+6. simple-filter
+
+7. message-queue-browser
+
+8. multiple-producers-consumers
+
 
 Per compilare un'applicazione bisogna: 
 
 1. collegarsi con `vagrant ssh` alla macchina virtuale **Client** 
-   dell' [ambiente distribuito](env/VMs/), su cui sono installati *Java SDK* e *Maven* 
+   dell'ambiente distribuito, su cui sono installati *Java SDK* e *Maven* 
 
 2. posizionarsi nella cartella principale dell'applicazione di interesse 
 
@@ -79,14 +100,11 @@ Il risultato della costruzione di un'applicazione
 che dopo la costruzione è disponibile nella cartella *projects/jar*,  
 contenente il file *jar* dell'applicazione. 
 
-In alternativa si possono trovare direttamente i file jar 
-sempre nella cartella [jar](proj/jar/).
+In alternativa, nella cartella [jar](proj/jar/) 
+sono già presenti i file eseguibili senza dover effetturare la **build**.
 
 Ciascun componente eseguibile va poi mandato in esecuzione 
 nell'ambito della macchina virtuale *Client* dell'ambiente distribuito. 
-
-I **progetti** si trovano 
-nella cartella **/home/asw/projects/** oppure nella cartella **projects/** dell'utente di default. 
 
 Per eseguire le applicazioni:
 
