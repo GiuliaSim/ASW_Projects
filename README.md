@@ -1,78 +1,91 @@
-# Ambienti di esecuzione del corso di Architettura dei Sistemi Software 
+# Progetto Architettura dei Sistemi Software - Roma Tre (2018)
 
-Questa sezione del repository contiene il codice (*infrastructure-as-code*) 
-di alcuni *ambienti di esecuzione* distribuiti virtuali. 
-Ogni sottosezione (sottocartella) è relativa a un diverso ambiente di esecuzione. 
+Questo repository contiene il codice del *progetto* 
+del corso di [Architettura dei Sistemi Software](http://cabibbo.dia.uniroma3.it/asw/), 
+relativo ad *applicazioni distribuite* basate sull'uso di *Api JMS* 
+implementate dal servizio di middleware *Artemis*: 
+* il software è scritto in [Java](http://www.oracle.com/technetwork/java/index.html), 
+  e costruito con [Maven](https://maven.apache.org/); 
+* l'ambiente di esecuzione distribuito è composto 
+  da due macchine virtuali create con 
+  [VirtualBox](https://www.virtualbox.org/)
+  e [Vagrant](https://www.vagrantup.com/).
 
-Attualmente non sono presenti tutti gli ambienti. 
-Verranno aggiunti a questo repository durante lo svolgimento del corso. 
+## Software da installare sul proprio PC per la gestione degli ambienti di esecuzione  
 
-Questi ambienti di esecuzione possono essere utilizzati per 
-eseguire i progetti delle applicazioni distribuite 
-definiti nella cartella [projects/](../projects/) del repository. 
+* [VirtualBox](https://www.virtualbox.org/)
+* [Vagrant](https://www.vagrantup.com/) 
 
-## Preparazione 
+## Organizzazione del repository 
 
-Per usare delle versioni più recenti del software di sviluppo 
-(come *JDK* e *Gradle*) 
-è necessario modificare le prime righe dei relativi script di installazione 
-(ad esempio, **asw/environments/shared/scripts/setup-java.sh** per *JDK*), 
-indicando il numero della versione da utilizzare. 
+Questo repository è organizzato in due sezioni principali: 
+* [proj](proj/) contiene il codice delle *applicazioni distribuite*
+	e i relativi file *jar*; 
+* [env](env/) contiene il codice per la gestione delle macchina virtuali:
+  *Artemis* e *Client* che permettono l'esecuzione delle applicazioni distribuite sviluppate. 
+  
 
-## Utilizzo degli ambienti di esecuzione 
+## Creazione dell'ambiente di esecuzione
 
-Ogni ambiente di esecuzione è composto da uno o più macchine virtuali, 
+L'ambiente di esecuzione è composto da due macchine virtuali, 
 collegate in una rete privata. 
 
-Ogni ambiente è rappresentato da una diversa cartella di questa sezione del repository. 
-Si veda il file **README.md** di una cartella per la descrizione del relativo ambiente. 
+Gli ambienti vengono creati con **Vagrant**,
+per gestire l'ambiente distribuito bisogna:
 
-Gli ambienti vengono creati con **Vagrant**, 
-e possono essere tutti gestiti allo stesso modo. 
+1. usare una shell del proprio PC 
 
-Per gestire un ambiente bisogna: 
+2. posizionarsi nella cartella dell'[ambiente] (env/VMs/)
 
-1. usare una shell (per esempio, Git) del proprio PC 
+3. per avviare l'ambiente di esecuzione, 
+usare il comando `vagrant up Artemis` per creare la macchina virtuale *Artemis*
+e `vagrant up Client` per creare la macchina virtuale *Client*
 
-2. posizionarsi nella cartella dell'ambiente di interesse (ad esempio, **asw/environments/developer**)
-
-3. per avviare o creare l'ambiente di esecuzione, usare il comando `vagrant up` 
-
-4. per collegarsi con SSH a una macchina virtuale *VM* dell'ambiente, usare il comando `vagrant ssh VM`
+4. per collegarsi con SSH alla macchina virtuale *Client* dell'ambiente, usare il comando `vagrant ssh Client`
     
 E' anche possibile: 
 
 * arrestare l'ambiente di esecuzione, con il comando `vagrant halt`
 
-* distruggere l'ambiente di esecuzione, con il comando `vagrant destroy -f`  
+* distruggere l'ambiente di esecuzione, con il comando `vagrant destroy -f` 
 
-## Ambienti 
+## Build  
 
-* [developer](developer/):
-  per la compilazione e l'assemblaggio (build) dei progetti definiti nella cartella [projects/](../projects/) del repository, 
-  nonché per l'esecuzione di applicazioni Java non distribuite; 
-  i progetti (in questo e, anche negli altri ambienti) potranno essere trovati 
-  nella cartella **/home/asw/projects/** oppure nella cartella **projects/** dell'utente di default 
+La costruzione (build, ovvero compilazione e assemblaggio) delle applicazioni 
+va fatta applicazione per applicazione, 
+utilizzando **Maven**. 
 
-* [client-server](client-server/): 
-  per l'esecuzione di applicazioni Java distribuite di tipo client-server 
+Per compilare un'applicazione bisogna: 
 
-* [glassfish-payara5](glassfish-payara5/): 
-  per l'esecuzione di applicazioni Java EE con l'application server *GlassFish* (*Payara 5*)
-  
-* [docker](docker/): 
-  per la gestione e l'esecuzione di contenitori *Docker*  
+1. collegarsi con `vagrant ssh` alla macchina virtuale **Client** 
+   dell'[ambiente distribuito](env/VMs/), su cui sono installati *Java SDK* e *Maven* 
 
-* [docker-swarm](docker-swarm/): 
-  per la gestione e l'esecuzione di un cluster (*swarm*) di nodi *Docker*  
+2. posizionarsi nella cartella principale dell'applicazione di interesse 
 
-<!---
-  nulla di altro da escludere, in questo momento 
---> 
+3. per compilare e assemblare l'applicazione, usare il comando `maven install` 
 
-<!---
-* [standalone](standalone/):
-  l'ambiente più semplice, per l'esecuzione di applicazioni Java non distribuite 
---> 
+E' anche possibile: 
 
+* ripulire la build di un'applicazione, con il comando `maven clean`
+
+
+## Esecuzione 
+
+Il risultato della costruzione di un'applicazione 
+è composto da uno **componente eseguibile**, 
+che dopo la costruzione sono disponibili nella cartella **TODO: NON LO SO** dell'applicazione, 
+che in particolare conterrà una sotto-cartella per ciascun componente eseguibile dell'applicazione, 
+contenente i file *jar* dell'applicazione. 
+In alternativa si possono trovare direttamente i file jar 
+sempre nella cartella dei [progetti] (proj/).
+
+Ciascun componente eseguibile va poi mandato in esecuzione 
+nell'ambito della macchina virtuale *Client* dell'[ambiente distribuito](env/VMs/). 
+
+I **progetti** si trovano 
+nella cartella **/home/asw/projects/** oppure nella cartella **projects/** dell'utente di default. 
+
+Quindi posizionarsi nella cartella dei progetti con il comando `cd projects/`
+ed eseguire il file jar *X.jar* con il comando `java -jar X.jar` 
+(ad esempio, **java -jar simple-producer-0.0.1-SNAPSHOT-jar-with-dependencies.jar**)
 
