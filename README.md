@@ -60,23 +60,15 @@ nella cartella **/home/asw/projects/** oppure nella cartella **projects/** dell'
 La costruzione (build, ovvero compilazione e assemblaggio) delle applicazioni 
 va fatta applicazione per applicazione, 
 utilizzando **Maven**. 
-Tenendo conto che l'ordine in cui vengono costruite le applicazioni deve essere il seguente:
+Tenendo conto, per rispettare le dipendenze dei progetti, l'ordine in cui vengono costruite deve essere il seguente:
 
-1. asw-util
+1. *asw-util* e *asw-jndi*;
 
-2. asw-jndi
+2. *simple-producer*, *simple-synch-consumer*, *simple-asynch-consumer* e *message-queue-browser*;
 
-3. simple-producer
+3. *simple-filter*;
 
-4. simple-synch-consumer
-
-5. simple-asynch-consumer
-
-6. simple-filter
-
-7. message-queue-browser
-
-8. multiple-producers-consumers
+4. *multiple-producers-consumers*.
 
 
 Per compilare un'applicazione bisogna: 
